@@ -63,7 +63,7 @@
 
         function RunWebSocket() {
             if ("WebSocket" in window) {
-                var uri = "ws://" + window.location.host.replace("8686", "8005");
+                var uri = "ws://" + window.location.host + ":8005";//.replace("8686", "8005");
                 var ws = new WebSocket(uri);
 
                 ws.onopen = function() {

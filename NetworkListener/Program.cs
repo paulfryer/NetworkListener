@@ -30,7 +30,7 @@ namespace NetworkListener
         public static void Main()
         {
             var host = GetIp();
-            const string port = "8686";
+            const string port = "80";
             WebServerRoot = new Uri(string.Format("http://{0}:{1}", host, port));
             nancyHost = new NancyHost(WebServerRoot);
             nancyHost.Start();
@@ -140,7 +140,7 @@ namespace NetworkListener
                             foreach (var service in device.Services)
                             {
                                 var subscriptionUrl = service.EventSubscriptionUrl;
-                                var notificationUrl = new Uri("http://" + GetIp() + ":8686/notify");
+                                var notificationUrl = new Uri("http://" + GetIp() + ":80/notify");
 
 
                                 //if (subscriptionUrl.AbsoluteUri.EndsWith("/MediaRenderer/RenderingControl/Event"))
