@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="NetworkListener.ServiceDescription">
+    <Position X="6" Y="2.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAAgAAAIAAAAAAAACAAAAAAAAAgAAAAQ=</HashCode>
+      <FileName>ServiceDescription.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NetworkListener.ServiceSearcher">
+    <Position X="1.75" Y="2.75" Width="1.75" />
+    <NestedTypes>
+      <Delegate Name="NetworkListener.ServiceSearcher.ServiceDiscoveredEventHandler">
+        <TypeIdentifier>
+          <NewMemberFileName>ServiceSearcher.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>IEABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAgAAA=</HashCode>
+      <FileName>ServiceSearcher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NetworkListener.Devices.SonosDevice">
+    <Position X="11.5" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>gAACFAAEAIIAAAEAAAAQAAAAAACAAAAABoAAIBQIAAA=</HashCode>
+      <FileName>Devices\Device.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NetworkListener.Devices.Device">
+    <Position X="9" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>oAoAAAAAAgAAACAAAAAgAAAAQAEAEAAAAAgQAAAABAA=</HashCode>
+      <FileName>Devices\Device.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="NetworkListener.ISearchResponseParser">
+    <Position X="3.75" Y="2.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ISearchResponseParser.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
