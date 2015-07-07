@@ -142,7 +142,6 @@ namespace NetworkListener
                                 var subscriptionUrl = service.EventSubscriptionUrl;
                                 var notificationUrl = new Uri("http://" + GetIp() + ":80/notify");
 
-
                                 //if (subscriptionUrl.AbsoluteUri.EndsWith("/MediaRenderer/RenderingControl/Event"))
                                 //{
                                 Console.WriteLine("Using Server: " + serviceDescription.Server);

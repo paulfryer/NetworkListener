@@ -23,6 +23,8 @@ namespace NetworkListener.Modules
         {
             Get["/listen"] = p => View["Listen"];
 
+            Get["/sip"] = p => View["Sip"];
+
             Get["/test"] = parameters =>
             {
                 Console.Write("TESTING NANCY WEB SERVER.");

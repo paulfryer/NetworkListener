@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>SIP Demo</title>
+
+    
+
+        <script type="text/javascript" src="http://sipml5.googlecode.com/svn/trunk/release/SIPml-api.js" >
+
+        
+        </script>
+        
+        
+        <script type="text/javascript">
+            
+            var readyCallback = function (e) {
+                createSipStack(); // see next section
+            };
+            var errorCallback = function (e) {
+                console.error('Failed to initialize the engine: ' + e.message);
+            }
+            SIPml.init(readyCallback, errorCallback);
+
+
+
+
+            var sipStack;
+            var eventsListener = function (e) {
+                if (e.type == 'started') {
+                    login();
+                }
+                else if (e.type == 'i_new_message') { // incoming new SIP MESSAGE (SMS-like)
+                    acceptMessage(e);
+                }
+                else if (e.type == 'i_new_call') { // incoming audio/video call
+                    acceptCall(e);
+                }
+            }
+
+            function createSipStack() {
+                sipStack = new SIPml.Stack({
+                    realm: 'example.org', // mandatory: domain name
+                    impi: 'bob', // mandatory: authorization name (IMS Private Identity)
+                    impu: 'sip:bob@example.org', // mandatory: valid SIP Uri (IMS Public Identity)
+                    password: 'mysecret', // optional
+                    display_name: 'Bob legend', // optional
+                    websocket_proxy_url: 'wss://sipml5.org:10062', // optional
+                    outbound_proxy_url: 'udp://example.org:5060', // optional
+                    enable_rtcweb_breaker: false, // optional
+                    events_listener: { events: '*', listener: eventsListener }, // optional: '*' means all events
+                    sip_headers: [ // optional
+                            { name: 'User-Agent', value: 'IM-client/OMA1.0 sipML5-v1.0.0.0' },
+                            { name: 'Organization', value: 'Doubango Telecom' }
+                    ]
+                }
+                );
+            }
+            sipStack.start();
+        
+
+
+            
+
+            
+
+
+            var registerSession;
+            var eventsListener = function (e) {
+                console.info('session event = ' + e.type);
+                if (e.type == 'connected' && e.session == registerSession) {
+                    makeCall();
+                    sendMessage();
+                    publishPresence();
+                    subscribePresence('johndoe'); // watch johndoe's presence status change
+                }
+            }
+            var login = function () {
+                registerSession = sipStack.newSession('register', {
+                    events_listener: { events: '*', listener: eventsListener } // optional: '*' means all events
+                });
+                registerSession.register();
+            }
+
+
+
+
+            var callSession;
+            var eventsListener = function (e) {
+                console.info('session event = ' + e.type);
+            }
+            var makeCall = function () {
+                callSession = sipStack.newSession('call-audiovideo', {
+                    video_local: document.getElementById('video-local'),
+                    video_remote: document.getElementById('video-remote'),
+                    audio_remote: document.getElementById('audio-remote'),
+                    events_listener: { events: '*', listener: eventsListener } // optional: '*' means all events
+                });
+                callSession.call('johndoe');
+            }
+
+
+
+            var acceptCall = function (e) {
+                e.newSession.accept(); // e.newSession.reject() to reject the call
+            }
+
+
+
+
+        
+        </script>
+        
+
+        
+
+    </head>
+
+    <body >
+    
+  
+
+
+
+
+
+</body>
+
+</html>
